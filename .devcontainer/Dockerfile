@@ -4,6 +4,10 @@ FROM ubuntu:20.04
 # Set environment variables for non-interactive installations
 ENV DEBIAN_FRONTEND=noninteractive
 ENV PATH="/root/.cargo/bin:$PATH"
+ENV NB_USER=jovyan
+ENV NB_UID=1000
+ENV NB_GID=100
+ENV NOTEBOOK_DIR=/home/$NB_USER/work/notebooks
 
 # Accept USER_UID and USER_GID as build arguments
 ARG USER_UID=1000
@@ -30,11 +34,17 @@ RUN curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y && \
 RUN pip install --no-cache-dir notebook jupyterlab
 
 # Create and configure jovyan user with matching UID/GID
-RUN if ! getent group $USER_GID > /dev/null 2>&1; then groupadd -g $USER_GID jovyan; fi && \
-    if ! id -u jovyan > /dev/null 2>&1; then useradd -m -u $USER_UID -g $USER_GID jovyan; fi && \
-    mkdir -p /home/jovyan/work/notebooks && \
-    chown -R $USER_UID:$USER_GID /home/jovyan
+# Create jovyan group
+RUN groupadd --gid $NB_GID $NB_USER
 
+# Create jovyan user
+RUN useradd --no-log-init --uid $NB_UID --gid $NB_GID --create-home $NB_USER
+
+# Create the notebooks directory
+RUN mkdir -p $NOTEBOOK_DIR
+
+# Set permissions for the jovyan user
+RUN chown -R $NB_UID:$NB_GID /home/$NB_USER
     
 USER jovyan
 
