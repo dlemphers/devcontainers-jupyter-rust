@@ -1,0 +1,47 @@
+# Python cache files
+__pycache__/
+*.py[cod]
+*.ipynb_checkpoints
+
+# Jupyter Notebook metadata and checkpoints
+.ipynb_checkpoints/
+.notebook_metadata/
+*.jl.ipynb
+
+# Jupyter Notebook outputs (optional, if you don't want to commit outputs)
+*.output
+*.log
+
+# Virtual environment
+env/
+venv/
+ENV/
+*.env
+
+# Docker and DevContainer artifacts
+*.db
+*.sqlite
+
+# Editor-specific files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Operating system files
+.DS_Store
+Thumbs.db
+
+# Build files and dependency caches
+build/
+dist/
+*.egg-info/
+node_modules/
+
+# Notebook-specific artifacts (if working with JupyterLab)
+.lab/
+*.backup
+
+# Personal settings (optional)
+.jupyter/
