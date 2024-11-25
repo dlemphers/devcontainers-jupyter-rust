@@ -1,0 +1,26 @@
+{
+	"name": "Rust Jupyter DevContainer",
+	"build": {
+	  "dockerfile": "Dockerfile"
+	},
+	"customizations": {
+	  "vscode": {
+		"settings": {
+		  "terminal.integrated.defaultProfile.linux": "bash"
+		},
+		"extensions": [
+		  "rust-lang.rust-analyzer",
+		  "ms-toolsai.jupyter",
+		  "ms-python.python"
+		]
+	  }
+	},
+	"forwardPorts": [8888],
+	"postStartCommand": "jupyter-lab --ip=0.0.0.0 --port=8888 --no-browser --allow-root --ServerApp.token='' --ServerApp.password=''",
+	"remoteEnv": {
+	  "PATH": "/root/.cargo/bin:${containerEnv:PATH}",
+	  "CARGO_HOME": "/root/.cargo",
+	  "RUSTUP_HOME": "/root/.rustup"
+	}
+  }
+  

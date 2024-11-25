@@ -1,0 +1,64 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual environments
+.env/
+.venv/
+env/
+venv/
+ENV/
+
+# Jupyter Notebook checkpoints
+.ipynb_checkpoints/
+
+# Jupyter Notebook metadata and runtime files
+*.nbconvert/
+*.nb.html
+*.nb.log
+*.out/
+*.backup/
+*.egg-info/
+*.py[co]
+profile_default/
+__pycache__/
+*.sqlite
+.jupyter/
+
+# Local container and VS Code-specific files
+.vscode/
+.devcontainer/*.log
+.devcontainer/.cache/
+.devcontainer/.temp/
+*.dockerfile
+
+# Python-specific files
+*.pyc
+*.pyo
+*.pyd
+.Python
+
+# Logs and databases
+*.log
+*.sqlite3
+*.db
+
+# Temporary files and folders
+*.temp
+*.tmp
+*.bak
+*.swp
+*.swo
+.DS_Store
+*.~lock.*
+
+# OS-specific files
+Thumbs.db
+desktop.ini
+
+# Keep DevContainer files
+!.devcontainer/
+!.devcontainer/devcontainer.json
+!.devcontainer/Dockerfile
+!.devcontainer/*.sh
